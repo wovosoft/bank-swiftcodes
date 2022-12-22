@@ -7,6 +7,9 @@
 
 This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
 
+Data downloaded from https://github.com/smowtion/swiftcode which says these data collected
+from https://currencyaz.com/swift-code
+
 ## Installation
 
 Via Composer
@@ -45,13 +48,21 @@ If you discover any security related issues, please email author@email.com inste
 MIT. Please see the [license file](license.md) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/wovosoft/bank-swiftcodes.svg?style=flat-square
+
 [ico-downloads]: https://img.shields.io/packagist/dt/wovosoft/bank-swiftcodes.svg?style=flat-square
+
 [ico-travis]: https://img.shields.io/travis/wovosoft/bank-swiftcodes/master.svg?style=flat-square
+
 [ico-styleci]: https://styleci.io/repos/12345678/shield
 
 [link-packagist]: https://packagist.org/packages/wovosoft/bank-swiftcodes
+
 [link-downloads]: https://packagist.org/packages/wovosoft/bank-swiftcodes
+
 [link-travis]: https://travis-ci.org/wovosoft/bank-swiftcodes
+
 [link-styleci]: https://styleci.io/repos/12345678
+
 [link-author]: https://github.com/wovosoft
+
 [link-contributors]: ../../contributors

@@ -5,6 +5,7 @@ namespace Wovosoft\BankSwiftcodes\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Symfony\Component\Console\Command\Command as CommandAlias;
+use Wovosoft\BankSwiftcodes\Models\Bank;
 use Wovosoft\BankSwiftcodes\Models\SwiftCode;
 
 class ImportSwiftCode extends Command
@@ -31,7 +32,7 @@ class ImportSwiftCode extends Command
      */
     public function handle(): int
     {
-        $path = __DIR__ . "/../../../assets/SwiftCodes-master/SwiftCodes-master/AllCountries";
+        $path = __DIR__ . "/../../../assets/swiftcode-master/swiftcode-master/AllCountries";
         $this->info("\nInserting Swift Codes\n");
         $files = collect(File::allFiles($path));
         $this->output->progressStart($files->count());
@@ -40,11 +41,20 @@ class ImportSwiftCode extends Command
 
             $items = json_decode(File::get($fileInfo->getRealPath()));
             foreach ($items->list as $swift) {
+                $bank = Bank::query()
+                    ->whereName($swift->bank)
+                    ->first();
+                if (!$bank) {
+                    $bank = new Bank();
+                    $bank->name = $swift->bank;
+                    $bank->country_code = $items->country_code;
+                    $bank->saveQuietly();
+                }
                 $model = new SwiftCode();
                 $model->forceFill([
                     "country" => $items->country,
                     "country_code" => $items->country_code,
-                    "bank" => $swift->bank,
+                    "bank_id" => $bank->id,
                     "city" => $swift->city,
                     "branch" => $swift->branch,
                     "swift_code" => $swift->swift_code,
