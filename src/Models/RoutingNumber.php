@@ -2,7 +2,7 @@
 
 namespace Wovosoft\BankSwiftcodes\Models;
 
-class Bank extends BaseModel
+class RoutingNumber extends BaseModel
 {
 
 }

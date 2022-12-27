@@ -3,6 +3,7 @@
 namespace Wovosoft\BankSwiftcodes;
 
 use Illuminate\Support\ServiceProvider;
+use Wovosoft\BankSwiftcodes\Console\Commands\ImportRoutingNumbers;
 use Wovosoft\BankSwiftcodes\Console\Commands\ImportSwiftCode;
 
 class BankSwiftcodesServiceProvider extends ServiceProvider
@@ -79,7 +80,8 @@ class BankSwiftcodesServiceProvider extends ServiceProvider
 
         // Registering package commands.
         $this->commands([
-            ImportSwiftCode::class
+            ImportSwiftCode::class,
+            ImportRoutingNumbers::class,
         ]);
     }
 }
