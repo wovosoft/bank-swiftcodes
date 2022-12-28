@@ -2,6 +2,7 @@
 
 namespace Wovosoft\BankSwiftcodes\Imports;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -34,8 +35,16 @@ class RoutingNumbersImport implements ToModel, WithHeadingRow
 
     private function findDistrict(string $district)
     {
+        if ($district === "ANY DISTRICT") {
+            return null;
+        }
+
         return District::query()
-            ->where(DB::raw("lower(name)"), "like", strtolower($district))
+            ->where(function (Builder $builder) use ($district) {
+                $builder
+                    ->where(DB::raw("lower(name)"), "=", strtolower($district))
+                    ->orWhere(DB::raw('SOUNDEX(name)'), '=', DB::raw("SOUNDEX('$district')"));
+            })
             ->first()
             ?->id;
     }

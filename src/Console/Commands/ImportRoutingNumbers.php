@@ -14,7 +14,7 @@ class ImportRoutingNumbers extends Command
      *
      * @var string
      */
-    protected $signature = 'import:routing_numbers';
+    protected $signature = 'bank-swiftcodes:import_routing_numbers';
 
     /**
      * The console command description.
@@ -31,6 +31,7 @@ class ImportRoutingNumbers extends Command
     public function handle(): int
     {
         Excel::import(new RoutingNumbersImport, __DIR__ . "/../../../assets/RoutingNoList.xlsx");
+
         $this->info("Routing Numbers Imported Successfully");
         return CommandAlias::SUCCESS;
     }

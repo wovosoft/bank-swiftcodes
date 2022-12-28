@@ -17,6 +17,7 @@
     "require": {
         "illuminate/support": "~9",
         "wovosoft/laravel-common": ">=v1.0.5",
+        "wovosoft/bd-geocode": ">=v1.0.7",
         "maatwebsite/excel": ">=3.1",
         "psr/simple-cache": ">=2.0"
     },
