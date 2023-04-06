@@ -15,7 +15,6 @@
         "BankSwiftcodes"
     ],
     "require": {
-        "laravel/framework": "^10.0",
         "wovosoft/bd-geocode": "*",
         "maatwebsite/excel": ">=3.1",
         "psr/simple-cache": ">=2.0"
